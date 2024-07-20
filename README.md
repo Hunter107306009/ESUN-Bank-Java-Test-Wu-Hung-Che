@@ -2,7 +2,7 @@
 
 ## DEMO 影片
 [![Watch the video](https://img.youtube.com/vi/pPNip_rDih4/0.jpg)](https://www.youtube.com/watch?v=pPNip_rDih4) <br>
-(錄完DEMO影片後，有再精簡一下程式碼架構，將影片中的ConectDB拆分成多個小檔案)
+(錄完DEMO影片後，有再精簡一下程式碼架構，將影片中的ConnectDB拆分成多個小檔案)
 
 ## 前端頁面 URL
 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
