@@ -8,7 +8,7 @@
 
 ## 資料庫資訊
 (以下為預設值)<br>
-(可於 `ConnectDB.java` 34行~36行更改設定)
+(可於 `MainApplication.java` 13行~15行更改設定)
 
 - **DB位置** : `jdbc:postgresql://localhost:5432/postgres`
 - **user名稱** : `postgres`
