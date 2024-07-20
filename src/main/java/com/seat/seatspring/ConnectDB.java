@@ -29,6 +29,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 @Component
 public class ConnectDB {
     private final static String db = "jdbc:postgresql://localhost:5432/postgres";
@@ -251,11 +253,14 @@ class UpdateSeatHandler implements HttpHandler {
 
         String response;
         try {
+            conn.setAutoCommit(false);
+
             try (PreparedStatement pstmt = conn.prepareStatement(
                     "UPDATE Employee SET FLOOR_SEAT_SEQ = NULL WHERE FLOOR_SEAT_SEQ = ?")) {
                 pstmt.setInt(1, floorSeatSeq);
                 pstmt.executeUpdate();
             }
+
             try (PreparedStatement pstmt = conn.prepareStatement(
                     "UPDATE Employee SET FLOOR_SEAT_SEQ = ? WHERE EMP_ID = ?")) {
                 pstmt.setInt(1, floorSeatSeq);
@@ -267,9 +272,22 @@ class UpdateSeatHandler implements HttpHandler {
                     response = "Seat update failed";
                 }
             }
+
+            conn.commit();
         } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
             e.printStackTrace();
             response = "Error updating seat: " + e.getMessage();
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
 
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
