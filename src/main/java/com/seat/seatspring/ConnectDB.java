@@ -59,7 +59,7 @@ public class ConnectDB {
             server.createContext("/updateSeat", new UpdateSeatHandler(conn));
             server.setExecutor(null);
             server.start();
-            System.out.println("Server started on port 7070");
+            System.out.println("Server started on port 8080");
         } catch (IOException e) {
             System.err.println("Failed to start server: " + e.getMessage());
         }
