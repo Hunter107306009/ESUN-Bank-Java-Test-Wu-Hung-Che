@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    user-select: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+.controls {
+    width: 60vw;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.dropdown {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 200px;
+}
+.row {
+    width: 60vw;
+    display: flex;
+    margin-bottom: 10px;
+}
+.seat {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+}
+.legend {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 20px;
+}
+.box {
+    width: 50px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 10px;
+    border-radius: 1px;
+}
+.available {
+    background-color: gray;
+}
+.full {
+    background-color: red;
+}
+.select {
+    background-color: green;
+}
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00BFFF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 50px;
+    height: 20px;
+}
+.btn:hover {
+    background-color: #009ACD;
+}

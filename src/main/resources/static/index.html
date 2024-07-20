@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>座位狀態顯示</title>
+    <link rel="stylesheet" href="./seat.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="row" v-for="row in seats" :key="row.id">
+        <div class="seat" :class="{ available: seat.status === 'available', select: seat.status === 'select', full: seat.status === 'full' }"
+             v-for="seat in row.seats" :key="seat.id" @click="toggleSeat(seat)">
+            {{ seat.label }}
+        </div>
+    </div>
+    <div class="legend">
+        <div class="controls">
+            <select v-if="employeeIds.length" v-model="selectedEmployeeId" class="dropdown">
+                <option v-for="id in employeeIds" :key="id" :value="id">{{ id }}</option>
+            </select>
+        </div>
+        <span class="box available"></span> 空位
+        <span class="box full"></span> 已滿
+        <span class="box select"></span> 當前選擇
+        <button class="btn" @click="submitSelection">送出</button>
+    </div>
+</div>
+<script src="./seat.js"></script>
+</body>
+</html>
